@@ -15,13 +15,20 @@ async function main() {
             database: 'bee_movie'
         });
         var id = start;
+        var lastid;
+        var test = 10;
         while (true) {
-            var parentID = await conn.query('SELECT parentID FROM comments WHERE ID = "' + id + '"');
-            console.log(parentID);
-            throw 'done'
-            //var parent_id = 
+            lastid = id;
+            id = await conn.query('SELECT parentID FROM comments WHERE ID = "' + id + '"');
+            id = id[0].parentID;
+            if ((typeof t) != "string")
+                throw ('incontinuity @ ' + lastid + '\nparentID is ' + id)
+            test--;
+            if (test <= 0) 
+                throw 'test complete without issues'
         }
     } catch (err) {
         console.log(err);
+        process.abort();
     }
 }
