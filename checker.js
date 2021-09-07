@@ -16,7 +16,7 @@ async function main() {
         });
         var id = start;
         var lastid;
-        var test = 10;
+        var test = 50;
         while (true) {
             lastid = id;
             id = await conn.query('SELECT parentID FROM comments WHERE ID = "' + id + '"');
