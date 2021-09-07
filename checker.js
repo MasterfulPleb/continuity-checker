@@ -21,14 +21,14 @@ async function main() {
             lastid = id;
             id = await conn.query('SELECT parentID FROM comments WHERE ID = "' + id + '"');
             id = id[0].parentID;
-            if ((typeof t) != "string")
+            if ((typeof id) != "string")
                 throw ('incontinuity @ ' + lastid + '\nparentID is ' + id)
             test--;
             if (test <= 0) 
                 throw 'test complete without issues'
         }
     } catch (err) {
-        console.log(err);
+        console.error(err);
         process.abort();
     }
 }
