@@ -19,6 +19,7 @@ async function main() {
         while (true) {
             lastid = id;
             id = await conn.query('SELECT parentID FROM comments WHERE ID = "' + id + '"');
+            //if the ID thrown here is the parentID of the last collected comment, DB is intact
             if ((typeof id[0]) == "undefined")
                 throw ('incontinuity @ ' + lastid + '\nparentID is undefined')
             id = id[0].parentID;
