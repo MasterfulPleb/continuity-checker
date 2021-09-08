@@ -20,11 +20,11 @@ async function main() {
             lastid = id;
             id = await conn.query('SELECT parentID FROM comments WHERE ID = "' + id + '"');
             id = id[0].parentID;
-            if ((typeof id[0].parentID) == "undefined")
+            if ((typeof id) == "undefined")
                 throw ('incontinuity @ ' + lastid + '\nparentID is undefined')
-            if ((typeof id[0].parentID) != "string")
+            if ((typeof id) != "string")
                 throw ('incontinuity @ ' + lastid + '\nparentID is ' + id)
-            if (id[0].parentID == "ofiegh")
+            if (id == "ofiegh")
                 throw "done, no missing comments"
         }
     } catch (err) {
